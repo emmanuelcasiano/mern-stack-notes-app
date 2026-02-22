@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../lib/axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { ArrowLeftIcon } from "lucide-react";
@@ -20,7 +20,7 @@ const CreatePage = () => {
 
         setLoading(true);
         try {
-            await axios.post("http://localhost:5001/api/notes", { title, content });
+            await api.post("/notes", { title, content });
             toast.success("Note created successfully!");
             navigate("/");
         } catch (error) {
